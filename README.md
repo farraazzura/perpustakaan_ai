@@ -1,1 +1,1 @@
-Anjay Smart School Tapi Gak Smart
+Smart School
