@@ -24,6 +24,13 @@ with st.container():
     )
     if not phone:
         st.info("❕ Tolong isi Nomor Telepon")
+        
+    genre = st.text_input(
+        "Genre Buku : ",
+        placeholder="Masukkan Genre Buku..."
+    )
+    if not genre:
+        st.info("❕ Tolong isi Genre Buku")
     
     category = st.selectbox(
         "Pilihan Kategori Identitas : ",
@@ -37,9 +44,9 @@ if not (name and phone and category != "Pilih Kategori Identitas..."):
 else:
     with st.container():
         topic = st.text_input(
-            "Masukkan topik yang ingin kamu cari:",
-            placeholder="Contoh: Apa jurusan yang ada?",
-            help="Ketik topik yang ingin kamu cari informasinya"
+            "Masukkan kriteria yang ingin kamu cari:",
+            placeholder="Contoh: Rekomendasi buku genre romansa dari penulis tere liye?",
+            help="Ketik kriteria yang ingin kamu cari bukunya"
         )
         
         language = st.selectbox(
@@ -51,7 +58,7 @@ else:
 
     if search_button:
         if not topic:
-            st.error("❌ Tolong masukkan topik penelitian.")
+            st.error("❌ Tolong masukkan kriteria buku .")
         elif language == "Pilih Bahasa...":
             st.error("❌ Tolong pilih bahasa.")
         else:
@@ -63,7 +70,7 @@ else:
                 process=Process.sequential
             )
 
-            with st.spinner("🔄 Sedang mencari informasi..."):
+            with st.spinner("🔄 Sedang mencari buku..."):
                 result = crew.kickoff()
                 answer = result
                 saveSurvey(name, phone, category, topic, language)

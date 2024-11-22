@@ -16,7 +16,7 @@ class Static():
     
     def pageConfig():
         return st.set_page_config(
-            page_title="SKAGRI GPT",
+            page_title="SKABOOK",
             page_icon="🎓",
             layout="centered",
         )
@@ -27,9 +27,9 @@ class Static():
     def pageTitle():
         return st.markdown("""
             <div class="header-container" style="margin-top: 1%;">
-                <h1 class="header-title">SKAGRI GPT</h1>
+                <h1 class="header-title">SKABOOK</h1>
                 <p class="header-subtitle">Dikembangkan oleh</p>
-                <p class="header-team">SMK PGRI SOOKO Developer Team ✨</p>
+                <p class="header-team">SMKN 9 MALANG Data Science ✨</p>
             </div>
         """, unsafe_allow_html=True)
             
