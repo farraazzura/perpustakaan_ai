@@ -21,10 +21,10 @@ class Tasks:
                 
                 Format jawaban:
                 
-                💡 [Judul yang Catchy]
+                💡 [Judul Buku]
                 
-                [Paragraf 1 - max 3 baris]
-                [Paragraf 2 - max 3 baris] (opsional)
+                [Genre Buku]
+                [Nama Penulis]
                 
                 🔍 Sumber: [link valid]
                 """
