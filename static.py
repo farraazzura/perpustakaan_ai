@@ -26,6 +26,13 @@ class Static:
         return st.image("./logo.png")
 
     def pageTitle():
+<<<<<<< HEAD
+        return st.markdown("""
+            <div class="header-container" style="margin-top: 1%;">
+                <h1 class="header-title">SKABOOK</h1>
+                <p class="header-subtitle">Dikembangkan oleh</p>
+                <p class="header-team">SMKN 9 MALANG Data Science ✨</p>
+=======
         # Judul dengan efek gradasi dan animasi slide-in
         return st.markdown(
             """
@@ -37,6 +44,7 @@ class Static:
                 <h3 style="font-size: 1.5rem; font-weight: 400; color: #555;">
                     Dikembangkan oleh SMK NEGERI 9 MALANG - Data Science ✨
                 </h3>
+>>>>>>> 7226f21ae97ff0d1df00ef5601f25f5f9e65f6e7
             </div>
             <style>
                 @keyframes slideIn {

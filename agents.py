@@ -1,5 +1,5 @@
 from crewai import Agent
-from tools import webSearch
+from tools import docs_tool
 
 class Agents:
     def __init__(self, book):
@@ -17,5 +17,5 @@ class Agents:
                 "Dengan kemampuan analitik yang kuat, kamu akan memastikan setiap rekomendasi buku sesuai selera user ."
                 "Jawab dengan ramah jika ada yang memanggil namamu."
             ),
-            tools=[webSearch],
+            tools=[docs_tool],
         )

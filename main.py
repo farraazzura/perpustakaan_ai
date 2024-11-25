@@ -3,7 +3,6 @@ from crewai import Crew, Process
 from static import Static
 from agents import Agents
 from tasks import Tasks
-from database import saveSurvey
 
 # Konfigurasi Halaman
 Static.pageConfig()
@@ -13,12 +12,32 @@ Static.pageTitle()
 
 # Input Data Pengguna
 with st.container():
+
+    name = st.text_input("Nama Lengkap : ", placeholder="Masukkan Nama Lengkap...")
+    if not name:
+        st.info("❕ Tolong isi Nama Lengkap")
+
+    phone = st.text_input("Nomor Telepon : ", placeholder="Masukkan Nomor Telepon...")
+    if not phone:
+        st.info("❕ Tolong isi Nomor Telepon")
+
+    genre = st.text_input("Genre Buku : ", placeholder="Masukkan Genre Buku...")
+    if not genre:
+        st.info("❕ Tolong isi Genre Buku")
+
     st.header("Informasi Pengguna")
     name = st.text_input("Nama Lengkap :", placeholder="Masukkan Nama Lengkap...")
     phone = st.text_input("Nomor Telepon :", placeholder="Masukkan Nomor Telepon...")
+
     category = st.selectbox(
         "Kategori Identitas :",
-        ["Pilih Kategori Identitas...", "Guru", "Siswa/Siswi", "Orang Tua/Wali", "Masyarakat Umum"]
+        [
+            "Pilih Kategori Identitas...",
+            "Guru",
+            "Siswa/Siswi",
+            "Orang Tua/Wali",
+            "Masyarakat Umum",
+        ],
     )
 
 # Validasi Input Pengguna
@@ -31,12 +50,38 @@ else:
     with st.container():
         st.header("Pencarian Informasi")
         topic = st.text_input(
-            "Topik Pencarian:",
+            "Masukkan kriteria yang ingin kamu cari:",
+            placeholder="Contoh: Rekomendasi buku genre romansa dari penulis tere liye?",
+            help="Ketik kriteria yang ingin kamu cari bukunya" "Topik Pencarian:",
             placeholder="Contoh: Apa jurusan yang ada?",
-            help="Ketik topik yang ingin Anda cari informasinya."
+            help="Ketik topik yang ingin Anda cari informasinya.",
         )
-        language = st.selectbox("Bahasa:", ["Pilih Bahasa...", "Bahasa Indonesia", "Bahasa Jawa", "Bahasa Inggris"])
+        language = st.selectbox(
+            "Bahasa:",
+            ["Pilih Bahasa...", "Bahasa Indonesia", "Bahasa Jawa", "Bahasa Inggris"],
+        )
         search_button = st.button("🔍 Mulai Penelitian")
+
+    if search_button:
+        if not topic:
+            st.error("❌ Tolong masukkan kriteria buku .")
+        elif language == "Pilih Bahasa...":
+            st.error("❌ Tolong pilih bahasa.")
+        else:
+
+            crew = Crew(
+                agents=[Agents(topic).research_agent()],
+                tasks=[Tasks(topic, language).research_task()],
+                verbose=True,
+                process=Process.sequential,
+            )
+
+            with st.spinner("🔄 Sedang mencari buku..."):
+                result = crew.kickoff()
+                answer = result
+                saveSurvey(name, phone, category, topic, language)
+
+            st.markdown(result)
 
         if search_button:
             if not topic:
@@ -50,7 +95,7 @@ else:
                         agents=[Agents(topic).search_book()],
                         tasks=[Tasks(topic, language).research_task()],
                         verbose=True,
-                        process=Process.sequential
+                        process=Process.sequential,
                     )
                     with st.spinner("🔄 Sedang mencari informasi..."):
                         result = crew.kickoff()
