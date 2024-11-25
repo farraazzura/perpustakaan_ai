@@ -1,7 +1,6 @@
 from crewai import Task
-from urlbase import url
 from agents import Agents
-from tools import webSearch
+from tools import docs_tool
 class Tasks:
     def __init__(self, topic, language):
         self.topic = topic
@@ -31,5 +30,5 @@ class Tasks:
                 """
             ),
             agent=Agents(self.topic).research_agent(),
-            tools=[webSearch],
+            tools=[docs_tool],
         )

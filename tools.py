@@ -1,3 +1,3 @@
-from crewai_tools import WebsiteSearchTool
+from crewai_tools import DirectoryReadTool
 
-webSearch = WebsiteSearchTool()
+docs_tool = DirectoryReadTool(directory='./blog-posts')
