@@ -53,8 +53,6 @@ else:
             "Masukkan kriteria yang ingin kamu cari:",
             placeholder="Contoh: Rekomendasi buku genre romansa dari penulis tere liye?",
             help="Ketik kriteria yang ingin kamu cari bukunya" "Topik Pencarian:",
-            placeholder="Contoh: Apa jurusan yang ada?",
-            help="Ketik topik yang ingin Anda cari informasinya.",
         )
         language = st.selectbox(
             "Bahasa:",

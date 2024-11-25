@@ -66,7 +66,7 @@ class Static:
                     font-family: 'Arial', sans-serif;
                     margin: 0;
                     padding: 0;
-                    background-color: #F3F4F6;
+                    background-color: #ffff;
                     display: flex;
                     justify-content: center;
                     align-items: center;
