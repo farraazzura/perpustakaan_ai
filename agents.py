@@ -1,15 +1,16 @@
 from crewai import Agent
 from tools import docs_tool
 
+
 class Agents:
     def __init__(self, book):
         self.book = book
-        
+
     def search_book(self):
         return Agent(
-            role='Search',
-            name='SKABOOK',
-            goal=f'Merekomendasikan buku bacaan yang ada di Perpustakaan SMKN 9 MALANG sesuai dengan kriteria yang diinputkan oleh user {self.topic}',
+            role="Search",
+            name="SKABOOK",
+            goal=f"Merekomendasikan buku bacaan yang ada di Perpustakaan SMKN 9 MALANG sesuai dengan kriteria yang diinputkan oleh user {self.topic}",
             verbose=True,
             max_iter=5,
             backstory=(
