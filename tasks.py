@@ -24,8 +24,8 @@ class Tasks:
                 
                 💡 [Judul Buku]
                 
-                [Genre Buku]
-                [Nama Penulis]
+                📖[Genre Buku]
+                🖋️[Penulis]
                 
                 🔍 Sumber: [link valid]
                 """
