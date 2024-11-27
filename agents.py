@@ -1,5 +1,5 @@
 from crewai import Agent
-from tools import docs_tool
+from tool.RAGTool import *
 
 
 class Agents:
@@ -19,5 +19,5 @@ class Agents:
                 "Dengan kemampuan analitik yang kuat, kamu akan memastikan setiap rekomendasi buku sesuai selera user ."
                 "Jawab dengan ramah jika ada yang memanggil namamu."
             ),
-            tools=[docs_tool],
+            tools=[RAGTool],
         )
