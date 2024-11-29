@@ -1,3 +1,3 @@
 from crewai_tools import DirectoryReadTool
 
-docs_tool = DirectoryReadTool(directory='./blog-posts')
+docs_tool = DirectoryReadTool(directory='./data_buku.csv')

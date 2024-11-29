@@ -21,8 +21,8 @@ with st.container():
     if not phone:
         st.info("❕ Tolong isi Nomor Telepon")
 
-    genre = st.text_input("Genre Buku : ", placeholder="Masukkan Genre Buku...")
-    if not genre:
+    book = st.text_input("Genre Buku : ", placeholder="Masukkan Genre Buku...")
+    if not book:
         st.info("❕ Tolong isi Genre Buku")
 
     st.header("Informasi Pengguna")
@@ -70,8 +70,8 @@ else:
         else:
 
             crew = Crew(
-                agents=[Agents(topic).research_agent()],
-                tasks=[Tasks(topic, language).research_task()],
+                agents=[Agents(book ,topic).search_book()],
+                tasks=[Tasks(book ,topic, language).research_task()],
                 verbose=True,
                 process=Process.sequential,
             )
@@ -92,8 +92,8 @@ else:
                 # Proses Pencarian
                 try:
                     crew = Crew(
-                        agents=[Agents(topic).search_book()],
-                        tasks=[Tasks(topic, language).research_task()],
+                        agents=[Agents(book ,topic).search_book()],
+                        tasks=[Tasks(book ,topic, language).research_task()],
                         verbose=True,
                         process=Process.sequential,
                     )

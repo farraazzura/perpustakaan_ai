@@ -3,8 +3,9 @@ from tools import docs_tool
 
 
 class Agents:
-    def __init__(self, book):
+    def __init__(self, book, topic):
         self.book = book
+        self.topic = topic
 
     def search_book(self):
         return Agent(
