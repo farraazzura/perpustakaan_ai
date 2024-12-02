@@ -1,5 +1,5 @@
 from crewai import Agent
-from tool.RAGTool import *
+from tools.RAGTool import *
 
 
 class Agents:

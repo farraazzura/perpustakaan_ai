@@ -1,6 +1,6 @@
 from crewai import Task
 from agents import Agents
-from tools import docs_tool
+from tools.RAGTool import *
 class Tasks:
     def __init__(self, topic, language, book):
         self.topic = topic
@@ -31,5 +31,5 @@ class Tasks:
                 """
             ),
             agent=Agents(self.topic, self.book).search_book(),
-            tools=[docs_tool],
+            tools=[RAGTool],
         )
