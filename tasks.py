@@ -1,6 +1,7 @@
 from crewai import Task
 from agents import Agents
-from tools.RAGTool import *
+from tools.RAGTool import RAGTool  # Pastikan RAGTool diimpor dengan benar
+
 class Tasks:
     def __init__(self, topic, language, book):
         self.topic = topic
@@ -8,6 +9,9 @@ class Tasks:
         self.book = book
         
     def research_task(self):
+        # Inisialisasi RAGTool di sini
+        rag_tool = RAGTool()
+
         return Task(
             description=(
                 f"Hey! Mari kita cari tahu buku sesuai {self.book} di SMKN 9 Malang🔍 "
@@ -30,6 +34,6 @@ class Tasks:
                 🔍 Sumber: [link valid]
                 """
             ),
-            agent=Agents(self.topic, self.book).search_book(),
-            tools=[RAGTool],
+            agent=Agents(self.topic, self.book).search_book(),  # Pastikan ini mengembalikan agent yang valid
+            tools=[rag_tool],  # Pastikan kita memasukkan objek RAGTool
         )
